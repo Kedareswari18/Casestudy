@@ -1,0 +1,29 @@
+package com.cart;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.cart.repository.CartRepository;
+import com.cart.service.CartService;
+
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+class CartManagementApplicationTests {
+	
+	@Autowired
+	private CartService cartService;
+	
+	@MockBean
+	private CartRepository cartRepository;
+
+	@Test
+	void contextLoads() {
+	}
+
+}

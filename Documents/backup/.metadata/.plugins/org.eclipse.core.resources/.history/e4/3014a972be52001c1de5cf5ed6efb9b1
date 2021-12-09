@@ -1,0 +1,45 @@
+package com.cart.model;
+
+public class Item {
+	
+	private String CropName;
+	private String CropQty;
+	private float Price;
+	
+	@Override
+	public String toString() {
+		return "Item [CropName=" + CropName + ", CropQty=" + CropQty + ", Price=" + Price + "]";
+	}
+	
+	public String getCropName() {
+		return CropName;
+	}
+	public void setCropName(String cropName) {
+		CropName = cropName;
+	}
+	public String getCropQty() {
+		return CropQty;
+	}
+	public void setCropQty(String cropQty) {
+		CropQty = cropQty;
+	}
+	public float getPrice() {
+		return Price;
+	}
+	public void setPrice(float price) {
+		Price = price;
+	}
+	
+	public Item(String cropName, String cropQty, float price) {
+		super();
+		CropName = cropName;
+		CropQty = cropQty;
+		Price = price;
+	}
+	
+	public Item() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

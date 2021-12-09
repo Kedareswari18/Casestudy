@@ -1,0 +1,34 @@
+server:
+ port: 8900
+
+
+
+spring:
+ cloud:
+  gateway:
+   routes:
+#Route Mapping
+    - id: cropDetails #RouteIdentifier
+      uri: http://localhost:9019/ #Respective microservice URL which needs to be mapped
+#Request Context Path Mapping
+      predicates:
+       - Path=/api/**
+
+
+
+#Route Mapping - With out Filter
+    - id: CartManagement
+      uri: http://localhost:7000/
+      predicates:
+      - Path=/api/**
+
+
+
+#Route Mapping - With out Filters
+    - id: OrderManagement
+      uri: http://localhost:9090/
+      predicates:
+      - Path=/api/**
+
+ application:
+  name: Eureka-with-api-gateway

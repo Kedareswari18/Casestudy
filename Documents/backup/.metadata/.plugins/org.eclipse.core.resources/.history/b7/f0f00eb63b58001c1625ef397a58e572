@@ -1,0 +1,57 @@
+package com.example.configuration;
+
+
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMq {
+	
+	@Bean
+	Queue queue(){
+		return new Queue("queue",false);
+		//return new Queue(name:"queueA",durable:false);
+		
+	}
+	
+	@Bean
+	Queue queueA(){
+		return new Queue("queueA",false);}
+	
+	@Bean
+	DirectExchange exchange() {
+		return new DirectExchange("exchange");
+	}
+	
+	@Bean
+	Binding binding(Queue queue,DirectExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with("ROUTING_A");
+	}
+	
+	@Bean
+	Binding bindingA(Queue queueA,DirectExchange exchange) {
+		return BindingBuilder.bind(queueA).to(exchange).with("ROUTING_A");
+	}
+	
+	@Bean
+	MessageConverter messageConverter() {
+		return new Jackson2JsonMessageConverter();
+	}
+	
+	@Bean
+	RabbitTemplate rabbitTemplate(ConnectionFactory factory) {
+		RabbitTemplate rabbitTemplate=new RabbitTemplate(factory);
+		rabbitTemplate.setMessageConverter(messageConverter());
+		return rabbitTemplate;
+	}
+
+}

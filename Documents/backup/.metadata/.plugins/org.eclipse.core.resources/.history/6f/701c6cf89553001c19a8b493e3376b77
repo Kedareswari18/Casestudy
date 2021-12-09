@@ -1,0 +1,163 @@
+package com.example.model;
+
+import java.util.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document (collection="CropDetails")
+public class Crop {
+	@Id
+	private String CropId;
+	private String CropName;
+	private String CropType;
+	private String CropQty;
+	private float Price;
+	private String UploadedBy;
+	private Location location;
+	
+	
+	
+	public Crop() {
+		
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Crop [CropId=" + CropId + ", CropName=" + CropName + ", CropType=" + CropType + ", CropQty=" + CropQty
+				+ ", Price=" + Price + ", UploadedBy=" + UploadedBy + ", location=" + location + "]";
+	}
+
+
+
+	public Crop(String CropId, String CropName, String CropType, String CropQty, float Price, String UploadedBy,
+			Location location) {
+		super();
+		this.CropId = CropId;
+		this.CropName = CropName;
+		this.CropType = CropType;
+		this.CropQty = CropQty;
+		this.Price = Price;
+		this.UploadedBy = UploadedBy;
+		this.location = location;
+	}
+
+	
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(CropId, CropName, CropQty, CropType, Price, UploadedBy, location);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Crop other = (Crop) obj;
+		return Objects.equals(CropId, other.CropId) && Objects.equals(CropName, other.CropName)
+				&& Objects.equals(CropQty, other.CropQty) && Objects.equals(CropType, other.CropType)
+				&& Float.floatToIntBits(Price) == Float.floatToIntBits(other.Price)
+				&& Objects.equals(UploadedBy, other.UploadedBy) && Objects.equals(location, other.location);
+	}
+
+
+
+	public String getCropId() {
+		return CropId;
+	}
+
+
+
+	public void setCropId(String CropId) {
+		this.CropId = CropId;
+	}
+
+
+
+	public String getCropName() {
+		return CropName;
+	}
+
+
+
+	public void setCropName(String CropName) {
+		this.CropName = CropName;
+	}
+
+
+
+	public String getCropType() {
+		return CropType;
+	}
+
+
+
+	public void setCropType(String CropType) {
+		this.CropType = CropType;
+	}
+
+
+
+	public String getCropQty() {
+		return CropQty;
+	}
+
+
+
+	public void setCropQty(String CropQty) {
+		this.CropQty = CropQty;
+	}
+
+
+
+	public float getPrice() {
+		return Price;
+	}
+
+
+
+	public void setPrice(float Price) {
+		this.Price = Price;
+	}
+
+
+
+	public String getUploadedBy() {
+		return UploadedBy;
+	}
+
+
+
+	public void setUploadedBy(String UploadedBy) {
+		this.UploadedBy = UploadedBy;
+	}
+
+
+
+	public Location getLocation() {
+		return location;
+	}
+
+
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+
+	
+	
+	
+	
+	
+
+}

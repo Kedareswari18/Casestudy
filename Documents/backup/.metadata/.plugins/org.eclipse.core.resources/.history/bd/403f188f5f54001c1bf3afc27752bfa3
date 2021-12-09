@@ -1,0 +1,53 @@
+package com.example.customexception;
+
+public class ItemException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String ErrCode;
+	private String ErrMsg;
+	
+	public ItemException()
+	{
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "ItemException [ErrCode=" + ErrCode + ", ErrMsg=" + ErrMsg + "]";
+	}
+
+
+
+	public ItemException(String errCode, String errMsg) {
+		super();
+		ErrCode = errCode;
+		ErrMsg = errMsg;
+	}
+
+
+
+	public String getErrCode() {
+		return ErrCode;
+	}
+
+	public void setErrCode(String errCode) {
+		ErrCode = errCode;
+	}
+
+	public String getErrMsg() {
+		return ErrMsg;
+	}
+
+	public void setErrMsg(String errMsg) {
+		ErrMsg = errMsg;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+
+}

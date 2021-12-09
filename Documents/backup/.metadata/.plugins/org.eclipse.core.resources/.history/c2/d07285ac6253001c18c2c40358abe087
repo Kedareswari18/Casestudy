@@ -1,0 +1,27 @@
+package com.cart.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cart.service.CartServiceImplementation;
+import com.example.model.Cart;
+
+@RestController
+@RequestMapping("/cart")
+public class CartController {
+	
+	@Autowired
+	CartServiceImplementation cartServiceImplementation;
+	//save the cartdetails
+	
+			@PostMapping("/savecart")
+			public Cart save(@RequestBody Cart cart) {
+			Cart c = cartServiceImplementation.save(crop);
+			return c;
+
+			}
+	
+}

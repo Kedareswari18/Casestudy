@@ -1,0 +1,6 @@
+package com.example.customexception;
+
+public class EmptyInputException extends RuntimeException{
+	
+
+}

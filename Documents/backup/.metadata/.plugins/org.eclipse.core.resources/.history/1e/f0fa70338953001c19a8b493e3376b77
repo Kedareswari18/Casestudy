@@ -1,0 +1,5 @@
+package com.example.customexception;
+
+public class CropDetailsNotFoundException {
+
+}

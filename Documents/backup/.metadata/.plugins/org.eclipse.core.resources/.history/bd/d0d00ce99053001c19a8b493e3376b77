@@ -1,0 +1,48 @@
+package com.cart.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
+public class Cart {
+	@Id
+	private String CropId;
+	private float Price;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Cart [CropId=" + CropId + ", Price=" + Price + "]";
+	}
+	
+	
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Cart(String cropId, float price) {
+		super();
+		this.CropId = cropId;
+		this.Price = price;
+	}
+	
+	public String getCropId() {
+		return CropId;
+	}
+	public void setCropId(String cropId) {
+		this.CropId = cropId;
+	}
+	public float getPrice() {
+		return Price;
+	}
+	public void setPrice(float price) {
+		this.Price = price;
+	}
+	
+	
+	
+}
+
+

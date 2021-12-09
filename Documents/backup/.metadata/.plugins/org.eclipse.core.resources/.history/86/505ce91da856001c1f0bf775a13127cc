@@ -1,0 +1,53 @@
+package com.example;
+
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.model.Crop;
+import com.example.repository.CropRepository;
+import com.example.service.CropService;
+import com.example.service.CropServiceImplementation;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+class CropDetailsApplicationTests {
+
+	@Autowired
+	private CropService cropService;
+	
+	@MockBean
+	private CropRepository cropRepository;
+	
+	//get All Crop Details
+	@Test
+	public void getAllCropTest() {
+	when(cropRepository.findAll()).thenReturn((List<Crop>) Stream.of
+	(new Crop(1,"Banana","Fruit","7kg",900, new location("Sheoraphuli","Amarabati","Kolkata","West Bengal","712223"),"Sawan Kundu"),
+	new Crop(2,"Mango","Fruit","9kg",1000, new location("Shefrraphuli","Aaarabati","Kolkataa","West Bengal","712223"),"Sawan Kundu")
+	).collect(Collectors.toList()));
+
+	assertEquals(2,CropService.getAll().size());
+	}
+
+	//add Crop Details
+	@Test
+	public void addCrop() throws EmptyInputExceptions{
+	CropDetails cropDetails =new CropDetails(1,"Banana","Fruit","7kg",900,
+	new Location("Sheoraphuli","Amarabati","Kolkata","West Bengal","712223"),"Sawan Kundu");
+	when(cropDetailsRepository.save(cropDetails)).thenReturn(cropDetails);
+	assertEquals(cropDetails,cropService.save(cropDetails));
+
+	}
+
+}

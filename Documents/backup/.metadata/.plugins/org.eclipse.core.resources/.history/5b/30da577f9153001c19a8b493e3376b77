@@ -1,0 +1,2 @@
+server.port:7000
+spring.data.mongodb.uri=mongodb+srv://Kedareswari18:keda18@cluster0.vltjb.mongodb.net/CartManagement?retryWrites=true&w=majority
